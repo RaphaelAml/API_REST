@@ -5,7 +5,7 @@ app.use(express.json());
 const colaborador = [
     {
         id: 1,
-        nome: "elefante"
+        nome: "azul"
     },
     {
         id: 2,
@@ -30,5 +30,27 @@ app.get("/colaborador/:id", (req, res) => {
     const index = buscarColaborador(req.params.id);
     res.status(200).json(colaborador[index]);
 });
+
+function buscarColaborador(id) {
+    return colaborador.findIndex((colaborador) => {
+        return colaborador.id === Number(id);
+    });
+}
+
+app.put("/colaborador/:id", (req, res) => {
+    const index = buscarColaborador(req.params.id);
+
+    if(index === -1) {
+        return res.status(404).send("Colaborador não encontrado");
+    }
+
+    colaborador[index] = {
+        id: Number(req.params.id),
+        nome: req.body.nome
+    };
+
+    res.status(200).send("Colaborador atualizado com sucesso");
+});
+
 
 export default app;
