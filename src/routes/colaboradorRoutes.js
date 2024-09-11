@@ -1,5 +1,6 @@
 import express from 'express';
-import { getColaboradores, getColaboradorById, createColaborador, updateColaborador, deleteColaborador } from '../controllers/colaboradorController.js';
+import { getColaboradores, getColaboradorById, createColaborador, updateColaborador, deleteColaborador }
+from '../controllers/colaboradorController.js';
 
 const router = express.Router();
 
